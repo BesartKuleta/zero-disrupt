@@ -1,0 +1,151 @@
+Project Title: Freeze Focus - A Chrome Extension to Enhance Concentration by Freezing Unnecessary Tabs
+
+Description:
+
+Develop a Chrome extension called "Freeze Focus" that helps users improve focus and productivity by freezing selected browser tabs and restricting access to other URLs for a specified period.
+
+Features and Functionality:
+
+New Accomplishment Workflow:
+
+Trigger: User clicks the [New Accomplishment] button on the extension's popup interface.
+Set Timer: Prompt the user to enter the desired focus duration in minutes (e.g., 20 minutes).
+Select Tabs:
+Display a list of all open tabs with checkboxes.
+Allow the user to select the tabs necessary for their task (e.g., tabs 1, 4, 5).
+Initiate Focus Session:
+User clicks the [Freeze] button to start the session.
+During the Focus Session:
+
+Tab Management:
+Disable or hide all non-selected tabs.
+Prevent the user from reopening or accessing frozen tabs.
+URL Navigation Restriction:
+Allow navigation within the same domain of the selected tabs.
+Block access to new domains or URLs outside the selected ones.
+Persistent Timer:
+Display a countdown timer showing the remaining focus time.
+Ensure the timer continues running even if the browser is closed and reopened.
+Session Persistence:
+Maintain the focus session state across browser restarts.
+Reapply all restrictions upon reopening the browser until the timer expires.
+Post Focus Session:
+
+Unfreeze Tabs:
+Automatically unfreeze all tabs once the timer ends.
+Restore normal browsing capabilities.
+Notification:
+Notify the user that the focus session has ended.
+User Interface:
+
+Popup Interface:
+Clean and intuitive design for easy navigation.
+Display controls for starting a new focus session.
+Timer Display:
+Show the countdown timer prominently.
+Alerts and Reminders:
+Gentle reminders if the user attempts to access restricted content.
+Technical Implementation:
+
+Manifest File (manifest.json):
+
+Define necessary permissions:
+"tabs" for tab management.
+"webRequest" and "webRequestBlocking" for URL interception.
+"storage" for saving session data.
+"activeTab" for interacting with the current tab.
+Specify background scripts and popup interface files.
+Background Script (background.js):
+
+Session Management:
+Handle starting and ending of focus sessions.
+Store session data using chrome.storage.local.
+Tab Control:
+Use chrome.tabs.update() and chrome.tabs.remove() to manage tabs.
+Monitor tab creation to prevent opening new tabs during the session.
+URL Blocking:
+Use chrome.webRequest.onBeforeRequest to intercept and block disallowed URLs.
+Implement logic to allow navigation within approved domains.
+Popup Script (popup.js) and Interface (popup.html & popup.css):
+
+User Inputs:
+Form for setting the timer and selecting necessary tabs.
+Event Listeners:
+Handle clicks on [New Accomplishment] and [Freeze] buttons.
+Dynamic Content:
+Populate the tab list with current open tabs and checkboxes.
+Content Script (if necessary):
+
+Inject scripts into pages of selected tabs if needed for additional functionality.
+Persistent Storage:
+
+Use chrome.storage.local to save:
+Selected tabs.
+Timer duration and remaining time.
+Session state (active/inactive).
+Browser Restart Handling:
+
+On extension load, check for an active session.
+Reapply tab restrictions and resume timer.
+Additional Considerations:
+
+Error Handling:
+
+Validate user inputs (e.g., timer value).
+Handle edge cases, such as all tabs being closed.
+Override Option:
+
+Provide an emergency override that requires deliberate action (e.g., entering a passphrase).
+Notifications:
+
+Use chrome.notifications API to inform the user when:
+Attempting to access a blocked tab or URL.
+The focus session ends.
+Performance Optimization:
+
+Ensure the extension does not significantly impact browser performance.
+Security and Privacy:
+
+Ensure all stored data is kept locally and securely.
+Do not collect or transmit personal data.
+Development Steps:
+
+Setup Project Structure:
+
+Create the necessary files and folders for the extension.
+Develop Manifest File:
+
+Configure permissions and background scripts.
+Implement Popup Interface:
+
+Design popup.html with forms for user input.
+Style using popup.css.
+Add interactivity with popup.js.
+Coding Background Script:
+
+Handle tab freezing logic.
+Implement timer functionality.
+Manage session persistence.
+Tab and URL Control Logic:
+
+Write functions to disable/enable tabs.
+Set up URL interception to block unapproved navigation.
+Testing:
+
+Test all functionalities thoroughly.
+Check session persistence across browser restarts.
+Validate that tabs and URLs are correctly restricted.
+Finalize and Package Extension:
+
+Ensure all code is clean and well-documented.
+Prepare the extension for deployment.
+Expected Deliverables:
+
+manifest.json
+background.js
+popup.html, popup.css, popup.js
+Any additional scripts or assets required for full functionality
+
+Instructions:
+Please generate the complete code for the Freeze Focus Chrome extension as per the specifications above, including all necessary files and code snippets. 
+Ensure that the code is well-organized, commented, and adheres to best practices for Chrome extension development.

@@ -1,0 +1,520 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap');
+
+:root {
+  --background-color: #ffffff;
+  --text-color: #000000;
+  --secondary-text-color: #555555;
+  --accent-color: #0071e3;
+  --border-color: #e0e0e0;
+  --hover-color: #f5f5f5;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 15px;
+  padding-bottom: 0px;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  width: 320px;
+  box-sizing: border-box;
+}
+
+body.dark-theme {
+  --background-color: #000000;
+  --text-color: #ffffff;
+  --secondary-text-color: #86868b;
+  --border-color: #1d1d1f;
+  --hover-color: #1c1c1e;
+}
+
+.container {
+  position: relative;
+  width: 100%;
+  max-height: 350px !important;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.logo-title {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  width: 24px;
+  height: 24px;
+  margin-right: 10px;
+}
+
+h1 {
+  margin: 0;
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 1.2;
+  display: flex;
+  align-items: center;
+}
+
+h1 .bold {
+  font-weight: 700;
+  color: var(--text-color);
+  margin-right: 5px;
+}
+
+h1 .thin {
+  font-weight: 300;
+  background: linear-gradient(135deg, #5F7BFC, #3D5AFE);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  text-decoration: line-through;
+  text-decoration-color: #5F7BFC;
+  text-decoration-thickness: 2px;
+}
+
+h2 {
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.quote {
+  font-size: 11px; /* Change this line */
+  color: var(--secondary-text-color);
+  margin-bottom: 15px;
+  font-style: italic;
+}
+
+.tab-list {
+  max-height: 200px;
+  overflow-y: auto;
+  margin-bottom: 15px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  background-color: var(--background-color);
+}
+
+.tab-item {
+  display: flex;
+  align-items: center;
+  padding: 8px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.tab-item:last-child {
+  border-bottom: none;
+}
+
+.tab-item input[type="checkbox"] {
+  margin-right: 10px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  min-width: 16px;
+  min-height: 16px;
+  border: 2px solid var(--secondary-text-color);
+  border-radius: 3px;
+  outline: none;
+  cursor: pointer;
+  position: relative;
+  vertical-align: middle;
+}
+
+.tab-item input[type="checkbox"]:checked {
+  background: linear-gradient(135deg, #5F7BFC, #3D5AFE);
+  border-color: transparent;
+}
+
+.tab-item input[type="checkbox"]:checked::after {
+  content: '\2714';
+  font-size: 12px;
+  color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.tab-item label {
+  font-size: 14px;
+  cursor: pointer;
+  flex-grow: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: var(--secondary-text-color);
+  transition: color 0.2s ease;
+}
+
+.tab-item input[type="checkbox"]:checked + label {
+  color: var(--text-color);
+}
+
+.timer-input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  font-size: 14px;
+  margin-bottom: 15px;
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+.start-button {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #5F7BFC, #3D5AFE);
+  color: #ffffff;
+  cursor: pointer;
+  font-weight: 300;
+  transition: all 0.2s ease;
+  font-size: 16px;
+  margin-bottom: 15px;
+}
+
+.start-button:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.session-info {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: auto;
+  padding: 20px 0;
+}
+
+.time-display {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.time-label {
+  font-size: 16px;
+  font-weight: 300;
+  color: var(--text-color);
+  margin-right: 5px;
+}
+
+.time-value {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text-color);
+}
+
+.time-remaining {
+  color: var(--text-color);
+}
+
+.seconds {
+  color: #FF6347; /* Tomato red, for better contrast on dark background */
+}
+
+.end-button {
+  background-color: #f44336;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 10px 0;
+  cursor: pointer;
+  border-radius: 20px;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.end-button:hover {
+  background-color: #d32f2f;
+  transform: scale(1.05);
+}
+
+.money-icon {
+  font-size: 16px;
+  margin-right: 5px;
+}
+
+/* ... (rest of the styles remain the same) ... */
+
+.ambient-sound-section {
+  margin-bottom: 15px;
+}
+
+.ambient-sound-section h3 {
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 10px;
+  color: var(--secondary-text-color);
+}
+
+.ambient-sound-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px; /* Add space between icons and the start button */
+}
+
+.ambient-sound-button {
+  position: relative;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 50%;
+  transition: background-color 0.3s;
+}
+
+.ambient-sound-button i {
+  font-size: 16px;
+  color: var(--secondary-text-color);
+  transition: color 0.3s;
+}
+
+.ambient-sound-button.selected {
+  background-color: rgba(67, 96, 254, 0.2);
+}
+
+.ambient-sound-button.selected i,
+.ambient-sound-button:hover i {
+  color: #4360FE; /* Same color for selected and hover states */
+}
+
+.loading-spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: #fff;
+  animation: spin 1s ease-in-out infinite;
+  display: none;
+}
+
+@keyframes spin {
+  to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* ... (rest of the existing styles) ... */
+
+.stop-button {
+  background-color: #f44336;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 10px 0;
+  cursor: pointer;
+  border-radius: 20px;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.stop-button:hover {
+  background-color: #d32f2f;
+  transform: scale(1.05);
+}
+
+/* Add or replace the stop-button styles with these */
+.done-button {
+  background-color: #8B0000; /* Dark red background for both themes */
+  color: #ffffff; /* White text for both themes */
+  border: none;
+  padding: 8px 16px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 600;
+  margin: 20px auto 0;
+  cursor: pointer;
+  border-radius: 20px;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.done-button:hover {
+  background-color: #A52A2A; /* Slightly lighter red on hover for both themes */
+  transform: scale(1.05);
+}
+
+.theme-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  color: var(--text-color);
+  padding: 5px;
+  border-radius: 50%;
+  transition: background-color 0.3s;
+}
+
+.theme-toggle:hover {
+  background-color: var(--hover-color);
+}
+
+/* Add or modify these styles */
+#themeToggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px; /* Smaller font size */
+  color: var(--text-color);
+  padding: 5px;
+  transition: opacity 0.3s;
+  opacity: 0.6; /* Lower opacity by default */
+}
+
+#themeToggle:hover {
+  opacity: 0.9; /* Increase opacity on hover */
+}
+
+.theme-icon {
+  width: 100%;
+  height: 100%;
+}
+
+.theme-icon path {
+  fill: currentColor;
+}
+
+.tabs-label {
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px; /* Increased from 12px to 14px */
+  font-weight: 500; /* Thin font weight */
+  margin-bottom: 8px;
+  color: var(--text-color) !important;
+}
+
+/* If you're using a dark theme, you might want to adjust the color for dark mode */
+@media (prefers-color-scheme: dark) {
+  .tabs-label {
+    color: #f0f0f0;
+  }
+}
+
+/* Add these styles for the settings button and screen */
+#settingsButton, #closeSettings {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  color: var(--text-color);
+  padding: 5px;
+  transition: opacity 0.3s;
+  opacity: 0.6;
+}
+
+#settingsButton:hover {
+  opacity: 0.9;
+}
+
+.settings-screen {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  min-height: 100%;
+  background-color: var(--background-color);
+  z-index: 10;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.settings-content {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.settings-screen header {
+}
+
+.settings-screen h2 {
+  font-size: 18px;
+  font-weight: 300;
+}
+
+.setting-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.setting-item label {
+  font-size: 14px;
+  color: var(--text-color);
+}
+
+/* Styles for the toggle switch */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 24px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: .4s;
+  border-radius: 34px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: 2px;
+  bottom: 2px;
+  background-color: white;
+  transition: .4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+}

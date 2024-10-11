@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zero Disrupt</title>
+  <link rel="stylesheet" href="popup.css">
+  <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --scrollbar-track-light: #f1f1f1;
+      --scrollbar-thumb-light: #888;
+      --scrollbar-thumb-hover-light: #555;
+      
+      --scrollbar-track-dark: #0a0a0a;
+      --scrollbar-thumb-dark: #2a2a2a;
+      --scrollbar-thumb-hover-dark: #3a3a3a;
+    }
+
+    /* Scrollbar styles */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    /* Light theme scrollbar styles */
+    ::-webkit-scrollbar-track {
+      background: var(--scrollbar-track-light);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: var(--scrollbar-thumb-light);
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--scrollbar-thumb-hover-light);
+    }
+
+    /* Dark theme scrollbar styles */
+    .dark-theme ::-webkit-scrollbar-track {
+      background: var(--scrollbar-track-dark);
+    }
+    .dark-theme ::-webkit-scrollbar-thumb {
+      background: var(--scrollbar-thumb-dark);
+      border-radius: 4px;
+    }
+    .dark-theme ::-webkit-scrollbar-thumb:hover {
+      background: var(--scrollbar-thumb-hover-dark);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1><span class="bold">Zero</span> <span class="thin">Disrupt</span></h1>
+      <button id="themeToggle" aria-label="Toggle theme" style="display: none;">
+        <i class="fas fa-adjust"></i>
+      </button>
+      <button id="settingsButton" aria-label="Settings">
+        <i class="fas fa-cog"></i>
+      </button>
+    </header>
+    <p id="motivationalQuote" class="quote"></p> <!-- Move this line here -->
+    <div id="sessionInfo" class="session-info" style="display: none;">
+      <div class="time-display">
+        <span id="timeRemainingSeconds" class="time-remaining seconds"></span>
+      </div>
+      <button id="stopSessionButton" class="done-button">
+        End Session
+      </button>
+    </div>
+    <div id="setupSession" class="setup-session">
+      <h3 class="tabs-label">Allowed tabs</h3>
+      <div id="tabList" class="tab-list"></div>
+      <div class="input-group">
+        <select id="timerInput" class="timer-input">
+          <option value="15">15 minutes</option>
+          <option value="25" selected>25 minutes</option>
+          <option value="45">45 minutes</option>
+          <option value="60">1 hour</option>
+          <option value="90">1.5 hours</option>
+        </select>
+      </div>
+      <div class="ambient-sound-options">
+        <button class="ambient-sound-button selected" data-sound="no-sound">
+          <i class="fas fa-volume-mute" title="No Sound"></i>
+          <div class="loading-spinner"></div>
+        </button>
+        <button class="ambient-sound-button" data-sound="coffee">
+          <i class="fas fa-mug-hot" title="Coffee Shop"></i>
+          <div class="loading-spinner"></div>
+        </button>
+        <button class="ambient-sound-button" data-sound="rainy">
+          <i class="fas fa-cloud-rain" title="Rainy"></i>
+          <div class="loading-spinner"></div>
+        </button>
+        <button class="ambient-sound-button" data-sound="waves">
+          <i class="fas fa-water" title="Waves"></i>
+          <div class="loading-spinner"></div>
+        </button>
+        <button class="ambient-sound-button" data-sound="fire">
+          <i class="fas fa-fire" title="Fire"></i>
+          <div class="loading-spinner"></div>
+        </button>
+        <button class="ambient-sound-button" data-sound="nature">
+          <i class="fas fa-tree" title="Nature"></i>
+          <div class="loading-spinner"></div>
+        </button>
+      </div>
+      <button id="startSessionButton" class="start-button">Start Focus Session</button>
+    </div>
+    <div id="settingsScreen" class="settings-screen" style="display: none;">
+      <header>
+        <h1><span class="bold">Zero</span> <span class="thin">Disrupt</span></h1>
+        <button id="closeSettings" aria-label="Close">
+          <i class="fas fa-times"></i>
+        </button>
+      </header>
+      <div class="settings-content">
+        <div class="setting-item">
+          <label for="darkThemeSwitch">Dark Theme</label>
+          <label class="switch">
+            <input type="checkbox" id="darkThemeSwitch" checked>
+            <span class="slider round"></span>
+          </label>
+        </div>
+        <div class="setting-item">
+          <label for="showAchievedSwitch">Allow to End Session</label>
+          <label class="switch">
+            <input type="checkbox" id="showAchievedSwitch" checked>
+            <span class="slider round"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>
